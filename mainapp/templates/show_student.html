@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Enrollment</th>
+        <th>School</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.enrollment }}</td>
+        <td>{{ student.school }}</td>
+        <td>
+            <a href="/edit-student/{{ student.id }}"><span class="glyphicon glyphicon-pencil">Edit</span></a>
+            <a href="/delete-student/{{ student.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/student-form" class="btn btn-primary">Add New Record</a></center>
+</body>
+</html>
